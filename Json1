@@ -1,0 +1,309 @@
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}{
+  "version": true,
+  "size": 500,
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "asc",
+        "unmapped_type": "boolean"
+      }
+    }
+  ],
+  "stored_fields": [
+    "*"
+  ],
+  "script_fields": {},
+  "docvalue_fields": [
+    {
+      "field": "@timestamp",
+      "format": "date_time"
+    },
+    {
+      "field": "T",
+      "format": "date_time"
+    },
+    {
+      "field": "built_at",
+      "format": "date_time"
+    },
+    {
+      "field": "data_time",
+      "format": "date_time"
+    },
+    {
+      "field": "kubernetes_annotations_kubernetes.io/config.seen",
+      "format": "date_time"
+    },
+    {
+      "field": "kubernetes_annotations_kubernetes_io/config_seen",
+      "format": "date_time"
+    },
+    {
+      "field": "scheduled time",
+      "format": "date_time"
+    },
+    {
+      "field": "time",
+      "format": "date_time"
+    },
+    {
+      "field": "timestamp",
+      "format": "date_time"
+    },
+    {
+      "field": "ts",
+      "format": "date_time"
+    }
+  ],
+  "_source": {
+    "excludes": []
+  },
+  "query": {
+    "bool": {
+      "must": [],
+      "filter": [
+        {
+          "match_all": {}
+        },
+        {
+          "match_all": {}
+        },
+        {
+          "bool": {
+            "should": [
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "frontend-gui"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "gateway"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "eenadmin"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "drivefs"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "pgbouncer"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "vms-postgresql-restore"
+                }
+              }
+            ],
+            "minimum_should_match": 1
+          }
+        },
+        {
+          "range": {
+            "@timestamp": {
+              "gte": "2021-05-21T02:49:21.452Z",
+              "lte": "2021-05-21T03:11:20.880Z",
+              "format": "strict_date_optional_time"
+            }
+          }
+        }
+      ],
+      "should": [],
+      "must_not": [
+        {
+          "bool": {
+            "should": [
+              {
+                "match_phrase": {
+                  "pod": "test"
+                }
+              },
+              {
+                "match_phrase": {
+                  "pod": "stage"
+                }
+              }
+            ],
+            "minimum_should_match": 1
+          }
+        }
+      ]
+    }
+  },
+  "highlight": {
+    "pre_tags": [
+      "@kibana-highlighted-field@"
+    ],
+    "post_tags": [
+      "@/kibana-highlighted-field@"
+    ],
+    "fields": {
+      "*": {}
+    },
+    "fragment_size": 2147483647
+  }
+}
+
+  "version": true,
+  "size": 500,
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "asc",
+        "unmapped_type": "boolean"
+      }
+    }
+  ],
+  "stored_fields": [
+    "*"
+  ],
+  "script_fields": {},
+  "docvalue_fields": [
+    {
+      "field": "@timestamp",
+      "format": "date_time"
+    },
+    {
+      "field": "T",
+      "format": "date_time"
+    },
+    {
+      "field": "built_at",
+      "format": "date_time"
+    },
+    {
+      "field": "data_time",
+      "format": "date_time"
+    },
+    {
+      "field": "kubernetes_annotations_kubernetes.io/config.seen",
+      "format": "date_time"
+    },
+    {
+      "field": "kubernetes_annotations_kubernetes_io/config_seen",
+      "format": "date_time"
+    },
+    {
+      "field": "scheduled time",
+      "format": "date_time"
+    },
+    {
+      "field": "time",
+      "format": "date_time"
+    },
+    {
+      "field": "timestamp",
+      "format": "date_time"
+    },
+    {
+      "field": "ts",
+      "format": "date_time"
+    }
+  ],
+  "_source": {
+    "excludes": []
+  },
+  "query": {
+    "bool": {
+      "must": [],
+      "filter": [
+        {
+          "match_all": {}
+        },
+        {
+          "match_all": {}
+        },
+        {
+          "bool": {
+            "should": [
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "frontend-gui"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "gateway"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "eenadmin"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "drivefs"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "pgbouncer"
+                }
+              },
+              {
+                "match_phrase": {
+                  "kubernetes_container_name": "vms-postgresql-restore"
+                }
+              }
+            ],
+            "minimum_should_match": 1
+          }
+        },
+        {
+          "range": {
+            "@timestamp": {
+              "gte": "2021-05-21T02:49:21.452Z",
+              "lte": "2021-05-21T03:11:20.880Z",
+              "format": "strict_date_optional_time"
+            }
+          }
+        }
+      ],
+      "should": [],
+      "must_not": [
+        {
+          "bool": {
+            "should": [
+              {
+                "match_phrase": {
+                  "pod": "test"
+                }
+              },
+              {
+                "match_phrase": {
+                  "pod": "stage"
+                }
+              }
+            ],
+            "minimum_should_match": 1
+          }
+        }
+      ]
+    }
+  },
+  "highlight": {
+    "pre_tags": [
+      "@kibana-highlighted-field@"
+    ],
+    "post_tags": [
+      "@/kibana-highlighted-field@"
+    ],
+    "fields": {
+      "*": {}
+    },
+    "fragment_size": 2147483647
+  }
+}
